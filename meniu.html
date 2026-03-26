@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meniu - Restaurant Badea Gheorghe Sebeș</title>
+    <meta name="description" content="Descoperă meniul divers al Restaurantului Badea Gheorghe: preparate tradiționale, fast food de calitate și servicii de catering în Sebeș.">
+    <meta name="location" content="Sebes, Alba, Romania">
+    <meta name="position" content="45.957422;23.567988">
+    <link rel="icon" href="imgs/logo.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-text">Badea Gheorghe</a>
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="meniu.html" class="active">Meniu</a></li>
+                    <li><a href="locatii.html">Locații</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="nav-toggle" id="navToggle">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="tel:+40720000000" class="contact-phone">
+                    Sună acum
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <div class="container">
+                    <h1>Meniu</h1>
+                    <p>Descoperă preparatele noastre, de la rețete tradiționale la specialități moderne</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Filters -->
+        <section class="menu-filters section-padding">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Toate</button>
+                    <button class="filter-btn" data-filter="traditionale">Tradiționale</button>
+                    <button class="filter-btn" data-filter="fastfood">Fast Food</button>
+                    <button class="filter-btn" data-filter="catering">Catering</button>
+                    <button class="filter-btn" data-filter="bauturi">Băuturi</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu List -->
+        <section class="menu-catalog section-padding">
+            <div class="container">
+                <div class="menu-list" id="menuList">
+                    <!-- FAST FOOD -->
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Burger Special</h3>
+                            <p>Carne de vită, brânză cheddar, salată, roșie, sosuri speciale</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">28 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Burger Chicken</h3>
+                            <p>Fileu de pui pane, salată, roșie, sos maioneză</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">24 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Cartofi Prăjiți</h3>
+                            <p>Cartofi prăjiți crocanți, serviți cu sosuri la alegere</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">12 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Hot Dog Clasic</h3>
+                            <p>Cârnăcior, muștar, ketchup, ceapă, pâine proaspătă</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">15 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Shaorma Mică</h3>
+                            <p>Carne de pui, salată, sosuri, lipie</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">20 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Shaorma Mare</h3>
+                            <p>Porție dublă de carne, salată, sosuri, lipie</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">28 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Mititei (5 buc)</h3>
+                            <p>Mititei preparati la gratar, cu mustar și pâine</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">22 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="fastfood">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Fast Food</span>
+                            <h3>Aripioare (6 buc)</h3>
+                            <p>Aripioare de pui fripte, cu sos BBQ sau picant</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">18 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TRADIȚIONALE -->
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Sarmale cu Mămăliguță</h3>
+                            <p>Sarmale tradiționale în foi de varză, servite cu mămăligă și smântână</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">32 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Papanași</h3>
+                            <p>Papanași branzoși cu smântână și dulceață de fructe</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">18 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Tochitură Românească</h3>
+                            <p>Carne de porc, cârnați, ouă ochiuri, mămăliguță</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">35 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Mămăliguță cu Brânză</h3>
+                            <p>Mămăliguță caldă, brânză topită, smântână</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">16 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Ciorbă de Burta</h3>
+                            <p>Ciorbă tradițională cu smântână și oul fiert</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">18 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Ciorbă de Legume</h3>
+                            <p>Ciorbă de sezon cu legume proaspete și smântână</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">14 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Pui la Cuptor</h3>
+                            <p>Pui întreg la cuptor cu legume și cartofi</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">38 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="traditionale">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Tradițional</span>
+                            <h3>Coaste de Porc</h3>
+                            <p>Coaste de porc la grătar, cu mămăligă și salată</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">36 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BĂUTURI -->
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Limonadă Proaspătă</h3>
+                            <p>Limonadă preparată din fructe proaspete și mentă</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">10 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Coca Cola</h3>
+                            <p>Băutură răcoritoare (330ml)</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">8 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Fanta</h3>
+                            <p>Băutură răcoritoare cu gust de portocale (330ml)</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">8 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Sprite</h3>
+                            <p>Băutură răcoritoare cu gust de lămâie (330ml)</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">8 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Apă Minerală</h3>
+                            <p>Apă minerală Borsec (500ml)</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">6 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Cafea Espresso</h3>
+                            <p>Cafea arabă proaspăt măcinată</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">8 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Cafea Latte</h3>
+                            <p>Cafea cu lapte și spumă de lapte</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">12 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="bauturi">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Băuturi</span>
+                            <h3>Ceai</h3>
+                            <p>Ceai negru sau din plante</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">8 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATERING -->
+                    <div class="menu-item" data-category="catering">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Catering</span>
+                            <h3>Pachet Familial (4 persoane)</h3>
+                            <p>Pachet complet: feluri principale, salate, desert</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">120 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="catering">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Catering</span>
+                            <h3>Pachet Corporate (10 persoane)</h3>
+                            <p>Meniu complet pentru evenimente corporate</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">280 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="catering">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Catering</span>
+                            <h3>Pachet Petrecere Copii</h3>
+                            <p>Meniu special pentru copii: nuggets, cartofi, gustări</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">90 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="catering">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Catering</span>
+                            <h3>Meniu Nuntă</h3>
+                            <p>Meniu complet pentru nunți (per persoană)</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">150 RON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="catering">
+                        <div class="menu-item-content">
+                            <span class="menu-category">Catering</span>
+                            <h3>Meniu Eveniment</h3>
+                            <p>Meniu personalizat pentru orice tip de eveniment</p>
+                            <div class="menu-item-footer">
+                                <span class="menu-price">La cerere</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="menu-cta section-padding">
+            <div class="container">
+                <div class="cta-box glassmorphism">
+                    <h2>Pregătit să comanzi?</h2>
+                    <p>Pentru rezervări sau comenzi, ne contactează telefonic. Echipa noastră te va ajuta să găsești preparatele perfecte pentru tine.</p>
+                    <a href="tel:+40720000000" class="btn btn-primary">Sună acum: 0720 000 000</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo-text">Badea Gheorghe</span>
+                <p class="footer-tagline">Păstrăm tradiția vie în inima Sebeșului, îmbinând gustul autentic cu eleganța contemporană.</p>
+                <p class="footer-copyright">© 2026 Badea Gheorghe. Toate drepturile rezervate.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Link-uri</h4>
+                <a href="index.html">Acasă</a>
+                <a href="meniu.html">Meniu</a>
+                <a href="locatii.html">Locații</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-social">
+                <h4>Contact</h4>
+                <p>E81 64, Sebeș, Alba</p>
+                <p><a href="tel:+40720000000">0720 000 000</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

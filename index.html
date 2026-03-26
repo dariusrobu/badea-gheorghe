@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badea Gheorghe - Restaurant Sebeș | Tradiție Reinterpretată</title>
+    <meta name="description" content="Gusturi autentice și preparate de calitate pentru fiecare moment al zilei, servite într-o atmosferă ce îmbină moștenirea locală cu rafinamentul modern.">
+    <meta name="location" content="Sebes, Alba, Romania">
+    <meta name="placename" content="Sebes">
+    <meta name="position" content="45.957422;23.567988">
+    <!-- Favicon -->
+    <link rel="icon" href="imgs/logo.jpeg" type="image/jpeg">
+    <!-- Google Fonts - Newsreader & Manrope -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-text">Badea Gheorghe</a>
+            <!-- Desktop Nav -->
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">Acasă</a></li>
+                    <li><a href="meniu.html">Meniu</a></li>
+                    <li><a href="locatii.html">Locații</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="nav-toggle" id="navToggle">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="tel:+40720000000" class="contact-phone">
+                    Rezervă Masă
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background" style="background-image: url('imgs/restaurant-interior.jpeg');"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="container">
+                    <span class="hero-location">Sebeș, România</span>
+                    <h1>Badea Gheorghe:<br><span class="italic">Tradiție Reinterpretată</span></h1>
+                    <p class="hero-subtitle">Gusturi autentice și preparate de calitate pentru fiecare moment al zilei, servite într-o atmosferă ce îmbină moștenirea locală cu rafinamentul modern.</p>
+                    <div class="hero-buttons">
+                        <a href="meniu.html" class="btn btn-primary">Explorează Meniul</a>
+                        <a href="tel:+40720000000" class="btn btn-secondary">Rezervă Masă</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span class="scroll-text">Descoperă</span>
+                <span class="material-symbols-outlined animate-bounce">keyboard_double_arrow_down</span>
+            </div>
+        </section>
+
+        <!-- Meniul Zilei (Daily Menu) -->
+        <section class="daily-menu section-padding" id="meniu">
+            <div class="container daily-menu-grid">
+                <div class="daily-menu-image">
+                    <div class="image-frame"></div>
+                    <img src="imgs/food.jpeg" alt="Meniul Zilei" class="heritage-mask">
+                    <div class="price-badge">
+                        <span class="price-label">Preț Meniu</span>
+                        <span class="price-value">65 RON</span>
+                    </div>
+                </div>
+                <div class="daily-menu-content">
+                    <span class="section-tag">Specialitatea de Astăzi</span>
+                    <h2>Meniul de Prânz al Casei</h2>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <h3>Supă Cremă de Ciuperci</h3>
+                            <p>Ciuperci proaspete din pădurile locale, servite cu crutoane artizanale și smântână de casă.</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Ceafă de Porc la Cuptor</h3>
+                            <p>Ceafă de porc pregătită lent, cu piure de cartofi și legume de sezon.</p>
+                        </div>
+                        <div class="menu-item">
+                            <h3>Plăcintă de Casă</h3>
+                            <p>Rețeta tradițională a bunicii, cu mere și scorțișoară.</p>
+                        </div>
+                    </div>
+                    <a href="meniu.html" class="btn btn-tertiary">Vezi Tot Meniul</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galerie Culinară (Culinary Gallery) -->
+        <section class="gallery section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Semnătura Badea Gheorghe</h2>
+                    <p class="section-subtitle">O călătorie vizuală prin aromele Sebeșului</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-item-large">
+                        <img src="imgs/restaurant-interior.jpeg" alt="Platou Tradițional" class="grayscale-hover">
+                        <div class="gallery-overlay">
+                            <h4>Interiorul Restaurantului</h4>
+                            <p>Atmosferă Elegantă</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="imgs/menu.jpeg" alt="Selecție de preparate" class="grayscale-hover">
+                        <div class="gallery-overlay">
+                            <h4>Preparate Tradiționale</h4>
+                            <p>Gusturi Autentice</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="imgs/terasa.jpeg" alt="Terasă" class="grayscale-hover">
+                        <div class="gallery-overlay">
+                            <h4>Terasă</h4>
+                            <p>În Aer Liber</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item gallery-item-large">
+                        <img src="imgs/fast-food-entrance.jpeg" alt="Fast Food" class="grayscale-hover">
+                        <div class="gallery-overlay">
+                            <h4>Fast Food de Calitate</h4>
+                            <p>Preparate Rapide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Povestea Noastră (Our Story) -->
+        <section class="our-story section-padding" id="poveste">
+            <div class="container story-grid">
+                <div class="story-content">
+                    <span class="section-tag">Rădăcini și Valori</span>
+                    <h2>O Poveste scrisă în Gust.</h2>
+                    <div class="story-text">
+                        <p>Povestea noastră începe în vechiul Sebeș, unde tradiția mesei era sfințită prin timpul acordat preparării și prin puritatea ingredientelor. Badea Gheorghe nu este doar un nume, ci o filozofie a respectului față de pământ și moștenire.</p>
+                        <p>Astăzi, aducem acea rigoare a calității într-un prezent rafinat. Fiecare detaliu din restaurantul nostru, de la lemnul masiv lucrat manual la tehnica de plating contemporană, reflectă dorința noastră de a păstra vie flacăra ospitalității transilvănene.</p>
+                    </div>
+                    <div class="story-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Ingrediente Locale</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">15+</span>
+                            <span class="stat-label">Ani de Excelență</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <img src="imgs/menu-fastfood.jpeg" alt="Tradiție culinară" class="story-img-1">
+                    <div class="story-images-stack">
+                        <img src="imgs/food.jpeg" alt="Chef la lucru" class="story-img-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program & Rezervări (Hours & Reservations) -->
+        <section class="reservation section-padding" id="rezervari">
+            <div class="reservation-bg"></div>
+            <div class="container reservation-grid">
+                <div class="reservation-info">
+                    <h2>Rezervă o Masă</h2>
+                    <div class="info-blocks">
+                        <div class="info-block">
+                            <div class="info-divider"></div>
+                            <div>
+                                <h4>Program de Funcționare</h4>
+                                <div class="schedule">
+                                    <span>Luni — Joi</span>
+                                    <span class="time">10:00 — 22:00</span>
+                                    <span>Vineri — Sâmbătă</span>
+                                    <span class="time">10:00 — 23:30</span>
+                                    <span>Duminică</span>
+                                    <span class="time">11:00 — 21:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-block">
+                            <div class="info-divider"></div>
+                            <div>
+                                <h4>Contact Direct</h4>
+                                <p class="contact-phone-text">Rezervări: <a href="tel:+40720000000">0720 000 000</a></p>
+                                <p class="contact-address">E81 64, Sebeș, Alba</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reservation-form glassmorphism">
+                    <form class="form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nume Complet</label>
+                                <input type="text" placeholder="Numele tău">
+                            </div>
+                            <div class="form-group">
+                                <label>Număr Telefon</label>
+                                <input type="tel" placeholder="07XX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Data</label>
+                                <input type="date">
+                            </div>
+                            <div class="form-group">
+                                <label>Nr. Persoane</label>
+                                <select>
+                                    <option>2 Persoane</option>
+                                    <option>4 Persoane</option>
+                                    <option>6+ Persoane</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Trimite Rezervarea</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section-padding">
+            <div class="container">
+                <div class="testimonials-header">
+                    <div class="testimonials-title">
+                        <h2>Ce Spun Clienții</h2>
+                        <p class="testimonial-quote">"O experiență care îți rămâne întipărită în memorie prin gust și ospitalitate."</p>
+                    </div>
+                    <div class="testimonials-nav">
+                        <button class="nav-btn"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button class="nav-btn"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <div class="stars">
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                        </div>
+                        <p class="testimonial-text">"Mâncarea a fost absolut delicioasă. Am încercat sarmalele și pot spune că sunt cele mai bune din zona Sebeș."</p>
+                        <div class="testimonial-author">
+                            <img src="imgs/food.jpeg" alt="Elena Dumitrescu">
+                            <div>
+                                <p class="author-name">Elena Dumitrescu</p>
+                                <p class="author-role">Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <div class="stars">
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                        </div>
+                        <p class="testimonial-text">"Locația perfectă pentru o cină romantică. Designul interior este deosebit, iar plating-ul este demn de un restaurant cu stele."</p>
+                        <div class="testimonial-author">
+                            <img src="imgs/menu.jpeg" alt="Andrei Popescu">
+                            <div>
+                                <p class="author-name">Andrei Popescu</p>
+                                <p class="author-role">Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <span class="quote-mark">"</span>
+                        <div class="stars">
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined">star</span>
+                        </div>
+                        <p class="testimonial-text">"Am organizat o zi de naștere aici și totul a fost impecabil. Serviciul de catering este de nota 10."</p>
+                        <div class="testimonial-author">
+                            <img src="imgs/terasa.jpeg" alt="Maria Ionescu">
+                            <div>
+                                <p class="author-name">Maria Ionescu</p>
+                                <p class="author-role">Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-padding">
+            <div class="container contact-grid">
+                <div class="contact-info-card glassmorphism">
+                    <h2>Unde ne găsești</h2>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <div>
+                                <h4>Adresă</h4>
+                                <p>E81 64, 515800 Sebeș, România</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="material-symbols-outlined">call</span>
+                            <div>
+                                <h4>Telefon</h4>
+                                <p><a href="tel:+40720000000">0720 000 000</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+                        <a href="#" aria-label="Instagram"><span class="material-symbols-outlined">share</span></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.5!2d23.567988!3d45.957422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDU3JzIyLjgiTiAyM8KwMzQnMDguNCJF!5e0!3m2!1sro!2sro!4v1600000000000!5m2!1sro!2sro" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo-text">Badea Gheorghe</span>
+                <p class="footer-tagline">Păstrăm tradiția vie în inima Sebeșului, îmbinând gustul autentic cu eleganța contemporană. Vă așteptăm să scriem împreună următoarea pagină a povestii noastre culinare.</p>
+                <p class="footer-copyright">© 2026 Badea Gheorghe. Patrimoniu culinar protejat.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Link-uri Utile</h4>
+                <a href="meniu.html">Meniu</a>
+                <a href="locatii.html">Locații</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-social">
+                <h4>Urmărește-ne</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TripAdvisor</a>
+                <p class="footer-address">Strada Progresul 5-7, Sebeș</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>

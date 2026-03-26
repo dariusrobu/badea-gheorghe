@@ -1,0 +1,383 @@
+:root {
+  /* Stitch Design System Color Palette */
+  --primary: #775a19;           /* Aged Gold */
+  --primary-fixed: #ffdea5;
+  --primary-fixed-dim: #e9c176;
+  --on-primary: #ffffff;
+  --on-primary-fixed: #261900;
+  --on-primary-fixed-variant: #5d4201;
+  --primary-container: #c5a059;
+  --on-primary-container: #4e3700;
+  
+  --surface: #fcf9f8;           /* Fine Paper */
+  --surface-dim: #dcd9d9;
+  --surface-bright: #fcf9f8;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6f3f2;
+  --surface-container: #f0eded;
+  --surface-container-high: #eae7e7;
+  --surface-container-highest: #e5e2e1;
+  
+  --on-surface: #1c1b1b;        /* Deep Charcoal */
+  --on-surface-variant: #3a3632;  /* Darker for better readability */
+  
+  --outline: #7f7667;
+  --outline-variant: #d1c5b4;
+  
+  /* Additional colors for specific uses */
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --on-error-container: #93000a;
+  
+  --secondary: #4a4746;            /* Darker for better readability */
+  --secondary-fixed: #e4e2e1;
+  --secondary-fixed-dim: #c8c6c5;
+  --on-secondary: #ffffff;
+  --on-secondary-fixed: #1b1c1b;
+  --on-secondary-fixed-variant: #474747;
+  --secondary-container: #e4e2e1;
+  --on-secondary-container: #525150;
+  
+  --tertiary: #4a4746;
+  --tertiary-fixed: #e2e2e2;
+  --tertiary-fixed-dim: #c6c6c7;
+  --on-tertiary: #ffffff;
+  --on-tertiary-fixed: #1a1c1c;
+  --on-tertiary-fixed-variant: #454747;
+  --tertiary-container: #a4a5a5;
+  --on-tertiary-container: #393b3b;
+  
+  --surface-tint: #775a19;
+  
+  /* Shadows */
+  --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-amazon: 0 20px 40px rgba(28, 27, 27, 0.06); /* Ambient shadow */
+  
+  /* Typography */
+  --font-headline: 'Newsreader', serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-label: 'Manrope', sans-serif;
+  
+  /* Border radius */
+  --border-radius: 0.125rem;
+  --border-radius-lg: 0.25rem;
+  --border-radius-xl: 0.5rem;
+  --border-radius-full: 0.75rem;
+  
+  /* Max width */
+  --max-width: 1200px;
+  
+  /* Transitions */
+  --transition-default: 0.3s ease;
+}
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--on-surface);
+  background-color: var(--surface);
+}
+
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 9.6rem 0; /* 96px */
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4.8rem; /* 48px */
+}
+
+.section-header h2 {
+  font-family: var(--font-headline);
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: 1.6rem; /* 16px */
+  line-height: 1.2;
+}
+
+.section-header p {
+  font-size: 1.8rem;
+  color: var(--primary);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  border-radius: var(--border-radius-lg);
+  transition: var(--transition-default);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Primary Button - Filled with primary */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-fixed-dim);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button - Outlined with ghost border */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--outline-variant);
+  border-color: rgba(219, 197, 180, 0.3); /* Ghost border at 30% */
+}
+
+.btn-secondary:hover {
+  background-color: rgba(219, 197, 180, 0.1);
+  border-color: var(--outline-variant);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* Tertiary Button - Text only */
+.btn-tertiary {
+  background-color: transparent;
+  color: var(--primary);
+  border: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+
+.btn-tertiary:hover {
+  text-decoration-color: var(--primary);
+}
+
+.btn-tertiary:active {
+  opacity: 0.8;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(252, 249, 248, 0.8); /* surface at 80% opacity */
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  /* No border - using elevation instead */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6.4rem; /* 64px */
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-text {
+  font-family: var(--font-headline);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--on-surface);
+  text-decoration: none;
+}
+
+.logo-text:hover {
+  color: var(--primary);
+}
+
+.logo img {
+  transition: var(--transition-default);
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 3.2rem; /* 32px */
+}
+
+.main-nav a {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  position: relative;
+  padding: 0.8rem 0;
+  transition: var(--transition-default);
+  font-family: var(--font-body);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--on-surface);
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: var(--transition-default);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--on-surface);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem; /* 24px */
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 2.4rem;
+  color: var(--on-surface);
+  cursor: pointer;
+  display: none;
+}
+
+.contact-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--on-surface);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-radius: var(--border-radius-full);
+  transition: var(--transition-default);
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-phone:hover {
+  background-color: var(--primary-fixed-dim);
+  transform: translateY(-2px);
+}
+
+.contact-phone:active {
+  transform: translateY(0);
+}
+
+/* Heritage Pattern Mask */
+.heritage-mask {
+  mask-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='%23000' fill-opacity='0.05'/%3E%3C/svg%3E");
+  mask-size: 40px 40px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='%23000' fill-opacity='0.05'/%3E%3C/svg%3E");
+  -webkit-mask-size: 40px 40px;
+}
+
+/* Glassmorphism */
+.glassmorphism {
+  background: rgba(252, 249, 248, 0.7); /* surface at 70% opacity */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Ambient Shadow */
+.ambient-shadow {
+  box-shadow: 0 20px 40px rgba(28, 27, 27, 0.06);
+}
+
+/* Elevation classes */
+.surface-container-lowest {
+  background-color: var(--surface-container-lowest);
+}
+
+.surface-container-low {
+  background-color: var(--surface-container-low);
+}
+
+.surface-container {
+  background-color: var(--surface-container);
+}
+
+.surface-container-high {
+  background-color: var(--surface-container-high);
+}
+
+.surface-container-highest {
+  background-color: var(--surface-container-highest);
+}
+
+/* Section Headers Adjustments */
+.hero h1 {
+  font-family: var(--font-headline);
+  font-size: 4.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 2.2rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments will be in responsive.css */

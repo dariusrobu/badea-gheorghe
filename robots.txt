@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Allow access to CSS, JS, and images
+Allow: /css/
+Allow: /js/
+Allow: /imgs/
+Allow: /assets/
+
+# Sitemap location
+Sitemap: https://restaurant-sebes.vercel.app/sitemap.xml
