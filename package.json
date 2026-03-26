@@ -4,12 +4,11 @@
   "description": "Website-ul oficial al Restaurantului Sebes - mâncare traditională și fast food",
   "main": "index.html",
   "scripts": {
-    "dev": "echo 'Starting development server...' && vercel dev",
-    "build": "echo 'Building for production...' && vercel build",
-    "start": "vercel",
-    "lint": "echo 'Linting HTML/CSS/JS...' && echo 'No linting tools configured - manual review recommended'",
-    "test": "echo 'Testing...' && echo 'Manual testing recommended - open site in browser and check responsiveness'",
-    "deploy": "vercel --prod"
+  "name": "badea-gheorghe",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "mkdir -p public && cp *.html public/ 2>/dev/null || true"
+  }
   },
   "keywords": [
     "restaurant",
