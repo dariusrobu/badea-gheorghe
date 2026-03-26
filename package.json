@@ -1,14 +1,11 @@
 {
-  "name": "restaurant-sebes",
+  "name": "badea-gheorghe",
   "version": "1.0.0",
   "description": "Website-ul oficial al Restaurantului Sebes - mâncare traditională și fast food",
   "main": "index.html",
   "scripts": {
-  "name": "badea-gheorghe",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "mkdir -p public && cp *.html public/ 2>/dev/null || true"
-  }
+    "build": "echo 'No build step needed'",
+    "vercel-build": "echo 'No build step needed'"
   },
   "keywords": [
     "restaurant",
@@ -24,18 +21,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/restaurant-sebes.git"
+    "url": "https://github.com/dariusrobu/badea-gheorghe.git"
   },
-  "bugs": {
-    "url": "https://github.com/yourusername/restaurant-sebes/issues"
-  },
-  "homepage": "https://restaurant-sebes.vercel.app",
   "devDependencies": {
     "@vercel/static-build": "^2.2.12"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
