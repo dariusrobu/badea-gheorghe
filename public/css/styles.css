@@ -1558,7 +1558,8 @@ a {
 
 /* Blog Post Page */
 .blog-post-section {
-  padding-top: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .blog-post-container {
