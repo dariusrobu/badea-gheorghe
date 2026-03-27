@@ -143,6 +143,34 @@
   }
 }
 
+  /* Mobile layout: move nav-toggle to left, center logo, keep phone on right */
+  @media (max-width: 1023px) {
+    .header-container {
+      position: relative;
+      justify-content: center;
+    }
+    
+    .logo-text {
+      flex-grow: 1;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .nav-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .contact-phone {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
 /* Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
