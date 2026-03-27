@@ -1,4 +1,7 @@
 {
+  "build": {
+    "outputDirectory": "."
+  },
   "routes": [
     { "src": "/api/create-checkout", "dest": "/api/create-checkout.js" }
   ]
