@@ -1557,6 +1557,10 @@ a {
 }
 
 /* Blog Post Page */
+.blog-post-section {
+  padding-top: 2rem;
+}
+
 .blog-post-container {
   max-width: 880px;
   margin: 0 auto;
