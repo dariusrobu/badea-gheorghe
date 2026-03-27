@@ -8,7 +8,7 @@
 const SANITY_CONFIG = {
   projectId: 'rb9fvomb',
   dataset: 'production',
-  apiVersion: '2024-01-01',
+  apiVersion: '2024-03-01',
   useCdn: true
 };
 
@@ -24,7 +24,7 @@ function getFallbackBlogPosts() {
       slug: { current: 'bine-ati-venit' },
       author: 'Badea Gheorghe',
       publishedAt: '2024-01-15T10:00:00Z',
-      excerpt: 'Suntem încântați să vă primim în restaurantul nostru unde tradiția românească întâlnește rafinamentul modern.',
+      excerpt: 'Bine ați venit la Restaurant Badea Gheorghe! Descoperiți gusturile autentice ale României într-o atmosferă caldă și primitoare.',
       featuredImage: null,
       categories: ['noutati']
     },
@@ -34,7 +34,7 @@ function getFallbackBlogPosts() {
       slug: { current: 'meniu-nou-primavara' },
       author: 'Badea Gheorghe',
       publishedAt: '2024-03-01T10:00:00Z',
-      excerpt: 'Am pregătit special pentru voi meniuri de primăvară cu ingrediente proaspete din producție locală.',
+      excerpt: 'Descoperiți noul nostru meniu de primăvară cu preparate proaspete, pregătite cu ingrediente locale și de sezon.',
       featuredImage: null,
       categories: ['retete', 'oferte']
     },
@@ -43,8 +43,8 @@ function getFallbackBlogPosts() {
       title: 'Eveniment Special: Seară de Vinuri',
       slug: { current: 'seara-de-vinuri' },
       author: 'Badea Gheorghe',
-      publishedAt: '2024-02-20T10:00:00Z',
-      excerpt: 'Vă invităm la o seară specială de vinuri, alături de sommelieri experți din zonă.',
+      publishedAt: '2024-02-10T10:00:00Z',
+      excerpt: 'Vă invităm la o seară specială de vinuri, alături de sommelieri experți. Descoperiți cele mai fine vinuri românești!',
       featuredImage: null,
       categories: ['evenimente']
     }
