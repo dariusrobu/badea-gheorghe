@@ -1558,7 +1558,7 @@ a {
 
 /* Blog Post Page */
 .blog-post-section {
-  padding-top: 4rem;
+  padding-top: calc(4rem + 6.4rem);
   padding-bottom: 4rem;
 }
 
