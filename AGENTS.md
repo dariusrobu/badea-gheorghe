@@ -194,3 +194,94 @@ Since this is a static website with minimal JavaScript, testing is primarily man
 - Utilize Vercel's image optimization (when implemented)
 - Preview changes using Vercel's preview deployments
 - Use Vercel's analytics for performance insights
+
+## 3. Sanity CMS Integration
+
+### Folder Structure
+```
+sanity/
+├── package.json          # Dependencies for Sanity project
+├── sanity.config.js     # Main Sanity configuration
+├── schemas/
+│   ├── index.js         # Export all schemas
+│   ├── menuItem.js     # Schema for menu items
+│   └── category.js     # Schema for menu categories
+└── README.md            # Setup guide
+```
+
+### Setting Up Sanity CMS
+
+1. **Install dependencies:**
+```bash
+cd sanity
+npm install
+```
+
+2. **Configure Project ID:**
+Edit `sanity/sanity.config.js` and replace `'YOUR_PROJECT_ID'` with your Sanity project ID.
+
+To get the Project ID:
+- Go to https://www.sanity.io/manage
+- Select your project
+- Copy the "Project ID" from General settings
+
+3. **Start Sanity Studio:**
+```bash
+cd sanity
+npm run dev
+```
+This opens at http://localhost:3333
+
+4. **Add Categories first:**
+Create 4 categories in Sanity Studio:
+- Fast Food
+- Tradițional
+- Băuturi
+- Catering
+
+5. **Add Menu Items:**
+Create menu products with:
+- Name
+- Category (reference)
+- Description
+- Price (RON)
+- Available (boolean)
+- Featured (boolean)
+
+### Updating the Website
+
+1. **Configure JavaScript:**
+Edit `js/main-sanity.js` and set your Sanity Project ID:
+```javascript
+const SANITY_CONFIG = {
+  projectId: 'YOUR_PROJECT_ID',  // Replace with your actual ID
+  dataset: 'production',
+  apiVersion: '2023-05-03',
+  useCdn: true
+};
+```
+
+2. **Update HTML to use Sanity scripts:**
+In `meniu.html`, replace:
+- `<script src="js/main.js"></script>` with `<script src="js/main-sanity.js"></script>`
+- `<script src="js/menu.js"></script>` with `<script src="js/menu-sanity.js"></script>`
+
+### Environment Variables (Vercel)
+
+Add in Vercel dashboard → Settings → Environment Variables:
+- `SANITY_PROJECT_ID` = your project ID
+- `SANITY_DATASET` = production (optional, defaults to production)
+
+### Fallback Menu
+
+The system includes a fallback menu in `js/main-sanity.js` that displays if Sanity API is unavailable. This ensures the website always works even if the CMS has issues.
+
+### Editing Menu via CMS
+
+To edit menu items:
+1. Go to https://[your-project].sanity.studio
+2. Find the menu item you want to edit
+3. Modify fields (name, price, description, etc.)
+4. Click "Publish"
+
+Changes appear on the live site within a few minutes.

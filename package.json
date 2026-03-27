@@ -1,11 +1,12 @@
 {
   "name": "badea-gheorghe",
   "version": "1.0.0",
+  "type": "module",
   "description": "Website-ul oficial al Restaurantului Sebes - mâncare traditională și fast food",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'No build step needed'",
-    "vercel-build": "echo 'No build step needed'"
+    "build": "echo 'Static site - no build required' && exit 0",
+    "vercel-build": "echo 'Static site - no build required' && exit 0"
   },
   "keywords": [
     "restaurant",
@@ -23,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/dariusrobu/badea-gheorghe.git"
   },
-  "devDependencies": {
-    "@vercel/static-build": "^2.2.12"
+  "dependencies": {
+    "stripe": "^14.0.0"
   }
 }

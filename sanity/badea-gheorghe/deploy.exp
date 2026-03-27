@@ -1,0 +1,6 @@
+#!/usr/bin/expect -f
+set timeout 60
+spawn npm run deploy -- --yes
+expect "subdomain you want to use."
+send "badea-gheorghe\r"
+expect eof
