@@ -74,6 +74,7 @@ function createBlogCard(post) {
  */
 async function loadBlogPost() {
   const blogPostContainer = document.getElementById('blogPost');
+  const relatedPostsContainer = document.getElementById('relatedPosts');
   if (!blogPostContainer) return;
 
   // Obține slug-ul din URL
@@ -97,6 +98,17 @@ async function loadBlogPost() {
     }
 
     blogPostContainer.innerHTML = createBlogPost(post);
+    
+    // Load related posts (all posts except current)
+    if (relatedPostsContainer) {
+      const allPosts = await window.fetchBlogPosts();
+      const relatedPosts = allPosts.filter(p => p.slug.current !== slug).slice(0, 3);
+      if (relatedPosts.length > 0) {
+        relatedPostsContainer.innerHTML = relatedPosts.map(post => createBlogCard(post)).join('');
+      } else {
+        relatedPostsContainer.parentElement.style.display = 'none';
+      }
+    }
   } catch (error) {
     console.error('Error loading blog post:', error);
     blogPostContainer.innerHTML = '<div class="error-state"><p>A apărut o eroare la încărcarea articolului.</p><a href="blog.html" class="btn">Înapoi la blog</a></div>';
