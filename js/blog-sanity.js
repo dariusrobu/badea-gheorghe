@@ -107,7 +107,7 @@ async function fetchBlogPostBySlug(slug) {
   }
 
   try {
-    const query = encodeURIComponent(`*[_type == "blogPost" && slug.current == $slug][0] {
+    const query = `*[_type == "blogPost" && slug.current == $slug][0] {
       _id,
       title,
       slug,
@@ -117,9 +117,9 @@ async function fetchBlogPostBySlug(slug) {
       "imageUrl": featuredImage.asset->url,
       body,
       categories
-    }`);
+    }`;
     
-    const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${query}&$$slug="${slug}"`;
+    const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}&${encodeURIComponent('$slug')}="${encodeURIComponent(slug)}"`;
     
     const response = await fetch(url);
     
