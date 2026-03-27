@@ -1,7 +1,5 @@
 {
-  "build": {
-    "outputDirectory": "."
-  },
+  "outputDirectory": "public",
   "routes": [
     { "src": "/api/create-checkout", "dest": "/api/create-checkout.js" }
   ]
