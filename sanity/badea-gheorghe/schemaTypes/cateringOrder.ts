@@ -131,6 +131,18 @@ export const cateringOrder = defineType({
       initialValue: 'pending'
     }),
     defineField({
+      name: 'paymentMethod',
+      title: 'Metodă Plată',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Numerar', value: 'cash'},
+          {title: 'Card', value: 'card'}
+        ]
+      },
+      initialValue: 'cash'
+    }),
+    defineField({
       name: 'paymentStatus',
       title: 'Status Plată',
       type: 'string',

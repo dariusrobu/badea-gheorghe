@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Restaurant Badea Gheorghe Sebeș</title>
-    <meta name="description" content="Descoperă ultimele noutăți, rețete și evenimente de la Restaurantul Badea Gheorghe în Sebeș.">
+    <meta name="description" content="Citește ultimele noutăți, rețete și evenimente de la Restaurantul Badea Gheorghe.">
     <meta name="location" content="Sebes, Alba, Romania">
     <link rel="icon" href="imgs/logo.jpeg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -49,30 +49,20 @@
             <div class="page-hero-content">
                 <div class="container">
                     <h1>Blog</h1>
-                    <p>Descoperă ultimele noutăți, rețete și evenimente de la restaurantul nostru</p>
+                    <p>Noutăți, rețete și evenimente de la Restaurantul Badea Gheorghe</p>
                 </div>
             </div>
         </section>
 
-        <!-- Blog Posts Grid -->
+        <!-- Blog Section -->
         <section class="section-padding">
             <div class="container">
                 <div class="blog-grid" id="blogGrid">
                     <!-- Blog posts will be loaded here dynamically -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="newsletter section-padding">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2>Abonează-te la noutăți</h2>
-                    <p>Primește cele mai recente știri și oferte direct pe email</p>
-                    <form class="newsletter-form" onsubmit="return false;">
-                        <input type="email" placeholder="Adresa ta de email" required>
-                        <button type="submit" class="btn btn-primary">Abonează-te</button>
-                    </form>
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Se încarcă articolele...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -80,47 +70,30 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>Badea Gheorghe</h3>
-                    <p>Tradiție reinterpretată în fiecare farfurie. Vă așteptăm să descoperiți gusturile autentice ale României.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><span class="material-symbols-outlined">thumb_up</span></a>
-                        <a href="#" aria-label="Instagram"><span class="material-symbols-outlined">photo_camera</span></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Link-uri Rapide</h4>
-                    <ul>
-                        <li><a href="index.html">Acasă</a></li>
-                        <li><a href="meniu.html">Meniu</a></li>
-                        <li><a href="rezervare.html">Rezervare</a></li>
-                        <li><a href="catering.html">Catering</a></li>
-                        <li><a href="locatii.html">Locații</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p><span class="material-symbols-outlined">location_on</span> Sebeș, Alba, Romania</p>
-                    <p><span class="material-symbols-outlined">phone</span> <a href="tel:+40720000000">+40 720 000 000</a></p>
-                    <p><span class="material-symbols-outlined">email</span> <a href="mailto:contact@badeagheorghe.ro">contact@badeagheorghe.ro</a></p>
-                </div>
-                <div class="footer-hours">
-                    <h4>Program</h4>
-                    <p><strong>Luni - Vineri:</strong> 08:00 - 23:00</p>
-                    <p><strong>Sâmbătă - Duminică:</strong> 09:00 - 00:00</p>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo-text">Badea Gheorghe</span>
+                <p class="footer-tagline">Păstrăm tradiția vie în inima Sebeșului.</p>
+                <p class="footer-copyright">© 2026 Badea Gheorghe. Toate drepturile rezervate.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Restaurant Badea Gheorghe. Toate drepturile rezervate.</p>
+            <div class="footer-links">
+                <h4>Link-uri</h4>
+                <a href="index.html">Acasă</a>
+                <a href="meniu.html">Meniu</a>
+                <a href="rezervare.html">Rezervare</a>
+                <a href="catering.html">Catering</a>
+                <a href="locatii.html">Locații</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-social">
+                <h4>Contact</h4>
+                <p>E81 64, Sebeș, Alba</p>
+                <p><a href="tel:+40720000000">0720 000 000</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/blog-sanity.js"></script>
     <script src="js/blog.js"></script>

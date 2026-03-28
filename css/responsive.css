@@ -1585,83 +1585,72 @@
     font-size: 1.25rem;
   }
   
-  .blog-post-container {
-    padding: 0;
+  body.blog-post-page {
+    padding-top: 60px !important;
   }
   
-  .blog-post-header {
-    padding: 1.5rem 1.5rem 0;
-  }
-  
-  .blog-post-image {
-    height: 250px;
-    margin: 1rem 0;
-  }
-  
-  .blog-post-content {
-    padding: 0 1.5rem 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .blog-post-title {
-    font-size: 1.75rem;
-  }
-  
-  .blog-post-excerpt {
-    font-size: 1.1rem;
-  }
-  
-  .blog-post-footer {
-    padding: 1.5rem;
-    flex-direction: column;
-  }
-  
-  .related-posts .blog-grid {
-    grid-template-columns: 1fr;
-  }
-}   BLOG RESPONSIVE STYLES
-   ======================================== */
-
-@media (max-width: 767px) {
-  .blog-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .blog-card-title {
-    font-size: 1.25rem;
+  .blog-post-section {
+    padding: 1.5rem 0 2rem;
   }
   
   .blog-post-container {
     padding: 0;
   }
   
+  .blog-post {
+    padding: 1.5rem;
+  }
+  
   .blog-post-header {
-    padding: 1.5rem 1.5rem 0;
-  }
-  
-  .blog-post-image {
-    height: 250px;
-    margin: 1rem 0;
-  }
-  
-  .blog-post-content {
-    padding: 0 1.5rem 1.5rem;
-    font-size: 1rem;
+    margin-bottom: 1.25rem;
   }
   
   .blog-post-title {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
   }
   
   .blog-post-excerpt {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+  }
+  
+  .blog-post-image {
+    height: 220px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-post-content {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  
+  .blog-post-content h1 { font-size: 1.5rem; }
+  .blog-post-content h2 { font-size: 1.3rem; }
+  .blog-post-content h3 { font-size: 1.15rem; }
+  
+  .blog-post-content p {
+    margin-bottom: 1rem;
+  }
+  
+  .blog-post-content img {
+    margin: 1.25rem 0;
+  }
+  
+  .blog-post-content blockquote {
+    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+  }
+  
+  .blog-post-content ul,
+  .blog-post-content ol {
+    padding-left: 1.25rem;
   }
   
   .blog-post-footer {
-    padding: 1.5rem;
-    flex-direction: column;
+    padding: 1.25rem 0 0;
+    margin-top: 1.5rem;
   }
   
   .related-posts .blog-grid {
     grid-template-columns: 1fr;
   }
+}

@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Setup delivery type toggle
   setupDeliveryToggle();
   
+  // Setup payment method toggle
+  setupPaymentMethodToggle();
+   
   // Setup submit button
   setupSubmitButton();
 });
@@ -249,6 +252,17 @@ function setupDeliveryToggle() {
   });
 }
 
+function setupPaymentMethodToggle() {
+  const btns = document.querySelectorAll('.payment-method-btn');
+  
+  btns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      btns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+}
+
 function updateSubmitButton() {
   const btn = document.getElementById('submitOrderBtn');
   const itemCount = Object.keys(cart).length;
@@ -256,8 +270,9 @@ function updateSubmitButton() {
   const name = document.getElementById('customerName')?.value;
   const phone = document.getElementById('customerPhone')?.value;
   const deliveryType = document.querySelector('.delivery-type-btn.active')?.dataset.type;
+  const paymentMethod = document.querySelector('.payment-method-btn.active')?.dataset.method;
   
-  let isValid = itemCount > 0 && name && phone;
+  let isValid = itemCount > 0 && name && phone && paymentMethod;
   
   if (deliveryType === 'pickup') {
     const pickupDate = document.getElementById('pickupDate')?.value;
@@ -282,6 +297,12 @@ document.addEventListener('DOMContentLoaded', function() {
       field.addEventListener('change', updateSubmitButton);
     }
   });
+  
+  // Payment method buttons
+  const paymentBtns = document.querySelectorAll('.payment-method-btn');
+  paymentBtns.forEach(btn => {
+    btn.addEventListener('click', updateSubmitButton);
+  });
 });
 
 function setupSubmitButton() {
@@ -302,10 +323,11 @@ async function submitOrder() {
   submitBtn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Se procesează...';
   
   const deliveryType = document.querySelector('.delivery-type-btn.active').dataset.type;
+  const paymentMethod = document.querySelector('.payment-method-btn.active').dataset.method;
   const total = calculateTotal();
   const refNumber = 'CAT-' + Math.random().toString(36).substring(2, 8).toUpperCase() + '-' + Date.now().toString().slice(-4);
   
-  // First save order to Sanity with pending payment
+  // First save order to Sanity
   const orderData = {
     _type: 'cateringOrder',
     _id: refNumber,
@@ -323,8 +345,9 @@ async function submitOrder() {
     })),
     specialInstructions: document.getElementById('specialInstructions').value || '',
     totalAmount: total,
+    paymentMethod: paymentMethod,
     status: 'pending',
-    paymentStatus: 'pending',
+    paymentStatus: paymentMethod === 'cash' ? 'pending' : 'pending',
     createdAt: new Date().toISOString()
   };
 
@@ -348,9 +371,19 @@ async function submitOrder() {
       throw new Error('Failed to save order');
     }
     
-    // If total is 0, just show success without payment
+    // Handle based on payment method
+    if (paymentMethod === 'cash') {
+      // Cash payment - show success message with instructions
+      confirmationRef.textContent = `Cod Comandă: ${refNumber}\nPlata se va face numerar la ridicare/livrare.`;
+      successMessage.classList.add('show');
+      resetForm();
+      return;
+    }
+    
+    // Card payment - continue to Stripe
+    // If total is 0, just show success
     if (total === 0) {
-      confirmationRef.textContent = `Cod Comandă: ${refNumber}\nVom contacta pentru confirmare și plată.`;
+      confirmationRef.textContent = `Cod Comandă: ${refNumber}\nVom contacta pentru confirmare.`;
       successMessage.classList.add('show');
       resetForm();
       return;
