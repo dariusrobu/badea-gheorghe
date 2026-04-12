@@ -71,6 +71,14 @@
   
   /* Transitions */
   --transition-default: 0.3s ease;
+
+  /* Legacy / Specific Colors */
+  --primary-brown: #5D4037;
+  --secondary-brown: #8D6E63;
+  --accent-yellow: #FFEB3B;
+  --accent-green: #4CAF50;
+  --text-dark: #1c1b1b;
+  --text-gray: #666666;
 }
 
 /* Global styles */
