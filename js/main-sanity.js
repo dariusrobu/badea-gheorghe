@@ -291,18 +291,15 @@ function renderSingleItem(item, topCategoryValue) {
   
   // Verifică dacă este produs recomandat
   const featuredClass = item.featured ? ' featured' : '';
-  const featuredBadge = item.featured ? '<div class="item-badge">Recomandat</div>' : '';
   const itemImage = getMenuItemImage(item);
   
   // Generăm container-ul de imagine
   const imageHtml = itemImage 
     ? `<div class="menu-item-image">
          <img src="${itemImage}" alt="${item.name}" loading="lazy">
-         ${featuredBadge}
        </div>`
     : `<div class="menu-item-image no-image">
-         <div class="placeholder-icon"><span class="material-symbols-outlined">restaurant</span></div>
-         ${featuredBadge}
+         <span class="material-symbols-outlined">restaurant</span>
        </div>`;
   
   return `
@@ -313,12 +310,7 @@ function renderSingleItem(item, topCategoryValue) {
           <h3>${item.name}</h3>
           <span class="menu-price">${priceDisplay}</span>
         </div>
-        <p>${item.description || ''}</p>
-        <div class="menu-item-footer">
-          <button class="btn-order-simple" onclick="window.location.href='tel:+40720000000'">
-            <span class="material-symbols-outlined">call</span> Comandă
-          </button>
-        </div>
+        <p class="menu-item-description">${item.description || ''}</p>
       </div>
     </div>
   `;

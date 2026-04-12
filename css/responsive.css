@@ -1469,15 +1469,40 @@
   
   .menu-grid, .menu-list {
     grid-template-columns: 1fr;
+    gap: 1.6rem;
   }
   
-  .menu-card-image {
+  .menu-item {
+    flex-direction: row; /* Keep horizontal on tablets */
+    gap: 1.6rem;
+  }
+  
+  .menu-item-image {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-item {
+    flex-direction: column; /* Stack vertically on small phones */
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+  
+  .menu-item-image {
+    width: 100%;
     height: 20rem;
   }
   
-  .menu-card-content {
-    padding: 1.6rem;
+  .menu-item-header h3 {
+    font-size: 1.8rem;
   }
+  
+  .menu-price {
+    font-size: 1.8rem;
+  }
+}
   
   .menu-card h3 {
     font-size: 1.8rem;
