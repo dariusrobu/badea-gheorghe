@@ -8,8 +8,7 @@
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "vite",
     "backend": "node backend/server.js",
-    "build": "vite build",
-    "vercel-build": "echo 'Static site - no build required' && exit 0"
+    "build": "vite build"
   },
   "keywords": [
     "restaurant",
