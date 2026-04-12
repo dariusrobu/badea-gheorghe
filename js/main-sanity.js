@@ -311,20 +311,24 @@ function renderSingleItem(item, topCategoryValue) {
     ? `<div class="menu-item-image">
          <img src="${itemImage}" alt="${item.name}" loading="lazy">
        </div>`
-    : `<div class="menu-item-image no-image">
-         <span class="material-symbols-outlined">restaurant</span>
-       </div>`;
-  
+    : `<div class="menu-item-no-image">🍲</div>`;
+       
+  const badgeHtml = item.featured ? '<span class="menu-badge">Popular</span>' : '';
+
   return `
     <div class="menu-item${featuredClass}" data-category="${topCategoryValue}">
       ${imageHtml}
       <div class="menu-item-content">
+        <span class="menu-item-category">${topCategoryValue}</span>
         <div class="menu-item-header">
           <h3>${item.name}</h3>
           <div class="menu-dots"></div>
-          <span class="menu-price">${priceDisplay}</span>
         </div>
         <p class="menu-item-description">${item.description || ''}</p>
+      </div>
+      <div class="menu-item-card-footer">
+        <span class="menu-price">${priceDisplay}</span>
+        ${badgeHtml}
       </div>
     </div>
   `;
