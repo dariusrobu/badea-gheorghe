@@ -219,8 +219,21 @@ function renderMenuItems(items) {
     topCategoriesMap[topTitle].subCategories[subTitle].items.push(item);
   });
   
+  const categoryOrder = ['traditionale', 'fastfood', 'mic-dejun', 'bauturi', 'catering', 'diverse'];
+
+  const sortedCategories = Object.values(topCategoriesMap).sort((a, b) => {
+    const indexA = categoryOrder.indexOf(a.value);
+    const indexB = categoryOrder.indexOf(b.value);
+    
+    // Fallback placement for unexpected categories
+    const posA = indexA !== -1 ? indexA : 999;
+    const posB = indexB !== -1 ? indexB : 999;
+    
+    return posA - posB;
+  });
+
   // Rendăm fiecare categorie principală
-  Object.values(topCategoriesMap).forEach(topCategory => {
+  sortedCategories.forEach(topCategory => {
     const categorySection = document.createElement('div');
     categorySection.className = 'menu-category-section';
     categorySection.id = `category-${topCategory.value}`;
