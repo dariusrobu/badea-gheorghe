@@ -15,12 +15,13 @@ const SANITY_CONFIG = {
  */
 async function fetchBlogPosts() {
   const query = encodeURIComponent(`
-    *[_type == "blogPost"] | order(publishedAt desc) {
+    *[_type == "blogPost"] | order(coalesce(publishedAt, _createdAt) desc) {
       _id,
       title,
       slug,
       author,
       publishedAt,
+      _createdAt,
       excerpt,
       categories,
       featuredImage {

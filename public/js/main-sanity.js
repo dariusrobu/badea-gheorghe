@@ -123,6 +123,43 @@ function getFallbackMenuItems() {
 // ========================================
 
 /**
+ * Obține imaginea locală corespunzătoare produsului
+ */
+function getMenuItemImage(item) {
+  const images = {
+    'Burger Special': 'burger-special.jpeg',
+    'Burger Chicken': 'burger-chicken.jpeg',
+    'Cartofi Prăjiți': 'cartofi-prajiti.jpeg',
+    'Hot Dog Clasic': 'hot-dog-clasic.jpeg',
+    'Shaorma Mică': 'shaorma-mica.jpeg',
+    'Shaorma Mare': 'shaorma-mare.jpeg',
+    'Mititei (5 buc)': 'mititei.jpeg',
+    'Aripioare (6 buc)': 'aripioare.jpeg',
+    'Sarmale cu Mămăliguță': 'sarmale-cu-mamaliguta.jpeg',
+    'Papanași': 'papanasi.jpeg',
+    'Tochitură Românească': 'tochitura-romaneasca.jpeg',
+    'Mămăliguță cu Brânză': 'mamaliguta-cu-branza.jpeg',
+    'Ciorbă de Burtă': 'ciorba-de-burta.jpeg',
+    'Ciorbă de Legume': 'ciorba-de-legume.jpeg',
+    'Pui la Cuptor': 'pui-la-cuptor.jpeg',
+    'Coaste de Porc': 'coaste-porc.jpeg'
+  };
+
+  // Verifică după nume exact
+  if (images[item.name]) return `imgs/meniu/${images[item.name]}`;
+  
+  // Verifică parțial dacă nu găsește exact
+  const lowerName = item.name.toLowerCase();
+  for (const [key, value] of Object.entries(images)) {
+    if (lowerName.includes(key.toLowerCase()) || key.toLowerCase().includes(lowerName)) {
+      return `imgs/meniu/${value}`;
+    }
+  }
+
+  return null; // Nu returnăm nicio imagine dacă nu există una specifică
+}
+
+/**
  * Renderizează lista de produse în HTML
  */
 function renderMenuItems(items) {
@@ -160,8 +197,15 @@ function renderMenuItems(items) {
     // Verifică dacă este produs recomandat
     const featuredClass = item.featured ? ' featured' : '';
     const featuredBadge = item.featured ? '<span class="menu-badge">Recomandat</span>' : '';
+    const itemImage = getMenuItemImage(item);
+    
+    // Generăm container-ul de imagine doar dacă avem una
+    const imageHtml = itemImage 
+      ? `<div class="menu-item-image"><img src="${itemImage}" alt="${item.name}" loading="lazy"></div>`
+      : '';
     
     itemDiv.innerHTML = `
+      ${imageHtml}
       <div class="menu-item-content${featuredClass}">
         ${featuredBadge}
         <span class="menu-category">${item.category?.title || 'Necategorizat'}</span>
@@ -212,6 +256,17 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Initializează filtrarea (din menu.js)
   if (typeof initializeMenuFiltering === 'function') {
     initializeMenuFiltering();
+  }
+
+  // Verifică parametrii URL pentru filtrare automată (ex: ?filter=catering)
+  const urlParams = new URLSearchParams(window.location.search);
+  const filterParam = urlParams.get('filter');
+  if (filterParam) {
+    const filterBtn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
+    if (filterBtn) {
+      // Simulăm un click pe butonul de filtrare
+      setTimeout(() => filterBtn.click(), 100);
+    }
   }
   
   // Mobile navigation toggle

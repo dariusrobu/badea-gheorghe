@@ -5,7 +5,10 @@
   "description": "Website-ul oficial al Restaurantului Sebes - mâncare traditională și fast food",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Static site - no build required' && exit 0",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "vite",
+    "backend": "node backend/server.js",
+    "build": "vite build",
     "vercel-build": "echo 'Static site - no build required' && exit 0"
   },
   "keywords": [
@@ -25,6 +28,18 @@
     "url": "https://github.com/dariusrobu/badea-gheorghe.git"
   },
   "dependencies": {
+    "@portabletext/to-html": "^5.0.2",
+    "@sanity/client": "^7.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.0",
+    "resend": "^6.10.0",
     "stripe": "^14.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "vite": "^4.4.9"
   }
 }

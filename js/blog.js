@@ -46,7 +46,7 @@ async function loadBlogPosts() {
  */
 function createBlogCard(post) {
   const imageUrl = window.getImageUrl(post.featuredImage, 600);
-  const date = window.formatDate(post.publishedAt);
+  const date = window.formatDate(post.publishedAt || post._createdAt);
   const categories = post.categories ? post.categories.map(cat => 
     `<span class="blog-category">${window.getCategoryName(cat)}</span>`
   ).join('') : '';
@@ -120,7 +120,7 @@ async function loadBlogPost() {
  */
 function createBlogPost(post) {
   const imageUrl = window.getImageUrl(post.featuredImage, 1200);
-  const date = window.formatDate(post.publishedAt);
+  const date = window.formatDate(post.publishedAt || post._createdAt);
   const categories = post.categories ? post.categories.map(cat => 
     `<span class="blog-category">${window.getCategoryName(cat)}</span>`
   ).join('') : '';
@@ -137,6 +137,16 @@ function createBlogPost(post) {
           case 'h3': return `<h3>${text}</h3>`;
           case 'blockquote': return `<blockquote>${text}</blockquote>`;
           default: return `<p>${text}</p>`;
+        }
+      } else if (block._type === 'image') {
+        const imageUrl = window.getImageUrl(block, 1000);
+        if (imageUrl) {
+          return `
+            <figure class="blog-post-content-image">
+              <img src="${imageUrl}" alt="${block.alt || post.title}">
+              ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}
+            </figure>
+          `;
         }
       }
       return '';

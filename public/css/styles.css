@@ -958,9 +958,9 @@ a {
     MENU CATALOG
     ======================================== */
 .menu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3.2rem;
 }
 
 .menu-item {
@@ -968,17 +968,60 @@ a {
     border-radius: var(--border-radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-light);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--primary);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .menu-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-amazon);
+}
+
+.menu-item-image {
+    width: 100%;
+    height: 22rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.1);
 }
 
 .menu-item-content {
     padding: 2.4rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-content.featured {
+    background: linear-gradient(to bottom right, rgba(119, 90, 25, 0.05), transparent);
+    position: relative;
+}
+
+.menu-badge {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    background: var(--primary);
+    color: var(--on-primary);
+    padding: 0.4rem 1.2rem;
+    border-radius: var(--border-radius-full);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 2;
 }
 
 .menu-category {
@@ -1633,49 +1676,5 @@ a {
 .related-posts h2 {
   text-align: center;
   margin-bottom: 2rem;
-}.blog-post-content p {
-  margin-bottom: 1.5rem;
 }
 
-.blog-post-content blockquote {
-  border-left: 4px solid var(--accent);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--text-secondary);
-}
-
-.blog-post-footer {
-  padding: 2rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  gap: 1rem;
-}
-
-/* Loading & Error States */
-.loading-state,
-.empty-state,
-.error-state {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: var(--text-secondary);
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Related Posts */
-.related-posts h2 {
-  text-align: center;
-  margin-bottom: 2rem;

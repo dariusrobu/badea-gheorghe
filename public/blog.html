@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articol Blog - Restaurant Badea Gheorghe Sebeș</title>
-    <meta name="description" content="Citește ultimele noutăți și articole de la Restaurantul Badea Gheorghe.">
+    <title>Blog - Restaurant Badea Gheorghe Sebeș</title>
+    <meta name="description" content="Citește ultimele noutăți, rețete și evenimente de la Restaurantul Badea Gheorghe.">
     <meta name="location" content="Sebes, Alba, Romania">
     <link rel="icon" href="imgs/logo.jpeg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
     </style>
 </head>
-<body style="padding-top: 110px;">
+<body>
     <!-- Header -->
     <nav class="site-header">
         <div class="container header-container">
@@ -26,9 +26,10 @@
                     <li><a href="index.html">Acasă</a></li>
                     <li><a href="meniu.html">Meniu</a></li>
                     
+                    <li></li>
                     <li><a href="locatii.html">Locații</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -43,21 +44,25 @@
     </nav>
 
     <main>
-        <!-- Blog Post Content -->
-        <section class="blog-post-section">
-            <div class="container">
-                <div class="blog-post-container" id="blogPost">
-                    <!-- Blog post will be loaded here dynamically -->
+        <!-- Page Header -->
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <div class="container">
+                    <h1>Blog</h1>
+                    <p>Noutăți, rețete și evenimente de la Restaurantul Badea Gheorghe</p>
                 </div>
             </div>
         </section>
 
-        <!-- Related Posts -->
-        <section class="section-padding related-posts">
+        <!-- Blog Section -->
+        <section class="section-padding">
             <div class="container">
-                <h2>Alte articole</h2>
-                <div class="blog-grid" id="relatedPosts">
-                    <!-- Related posts will be loaded here -->
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Blog posts will be loaded here dynamically -->
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Se încarcă articolele...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -76,6 +81,7 @@
                 <a href="index.html">Acasă</a>
                 <a href="meniu.html">Meniu</a>
                 
+                
                 <a href="locatii.html">Locații</a>
                 <a href="contact.html">Contact</a>
                 <a href="blog.html">Blog</a>
@@ -85,19 +91,14 @@
                 <p>E81 64, Sebeș, Alba</p>
                 <p><a href="tel:+40720000000">0720 000 000</a></p>
             </div>
-            <div class="footer-newsletter">
-                <h4>Newsletter</h4>
-                <p>Abonează-te pentru a primi cele mai noi oferte și noutăți culinare.</p>
-                <form action="/api/subscribe" method="POST" class="newsletter-form">
-                    <input type="email" name="email" placeholder="Adresa ta de email" required class="newsletter-input">
-                    <button type="submit" class="btn btn-primary">Abonează-te</button>
-                </form>
-            </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/blog-sanity.js"></script>
     <script src="js/blog.js"></script>
+</body>
+</html>
+></script>
 </body>
 </html>

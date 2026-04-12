@@ -45,7 +45,7 @@ async function loadBlogPosts() {
  * Creează HTML pentru un card de blog
  */
 function createBlogCard(post) {
-  const imageUrl = window.getImageUrl(post.imageUrl, 600);
+  const imageUrl = window.getImageUrl(post.featuredImage, 600);
   const date = window.formatDate(post.publishedAt);
   const categories = post.categories ? post.categories.map(cat => 
     `<span class="blog-category">${window.getCategoryName(cat)}</span>`
@@ -119,14 +119,13 @@ async function loadBlogPost() {
  * Creează HTML pentru un articol blog complet
  */
 function createBlogPost(post) {
-  const imageUrl = window.getImageUrl(post.imageUrl, 1200);
+  const imageUrl = window.getImageUrl(post.featuredImage, 1200);
   const date = window.formatDate(post.publishedAt);
   const categories = post.categories ? post.categories.map(cat => 
     `<span class="blog-category">${window.getCategoryName(cat)}</span>`
   ).join('') : '';
   
   // Pentru body-ul articolului, vom folosi simplu text sau HTML
-  // Într-o implementare completă, folosim Portable Text serializer
   let bodyContent = '';
   if (post.body && post.body.length > 0) {
     bodyContent = post.body.map(block => {

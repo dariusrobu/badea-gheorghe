@@ -30,7 +30,7 @@ async function fetchMenuItems() {
     return getFallbackMenuItems();
   }
   
-  // Query GROQ pentru a obține toate produsele
+  // Query GROQ pentru a obține toate produsele, inclusiv ierarhia de categorii
   const query = `*[_type == "menuItem" && isAvailable == true] | order(category->order asc, name asc) {
     _id,
     name,
@@ -38,10 +38,15 @@ async function fetchMenuItems() {
     price,
     isAvailable,
     featured,
-    "category": {
-      "title": category->title,
-      "slug": category->slug,
-      "value": category->_id
+    "category": category-> {
+      _id,
+      title,
+      "slug": slug.current,
+      "parent": parent-> {
+        _id,
+        title,
+        "slug": slug.current
+      }
     }
   }`;
   
@@ -80,41 +85,41 @@ async function fetchMenuItems() {
 function getFallbackMenuItems() {
   return [
     // FAST FOOD
-    { _id: '1', name: 'Burger Special', description: 'Carne de vită, brânză cheddar, salată, roșie, sosuri speciale', price: 28, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '2', name: 'Burger Chicken', description: 'Fileu de pui pane, salată, roșie, sos maioneză', price: 24, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '3', name: 'Cartofi Prăjiți', description: 'Cartofi prăjiți crocanți, serviți cu sosuri la alegere', price: 12, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '4', name: 'Hot Dog Clasic', description: 'Cârnăcior, muștar, ketchup, ceapă, pâine proaspătă', price: 15, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '5', name: 'Shaorma Mică', description: 'Carne de pui, salată, sosuri, lipie', price: 20, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '6', name: 'Shaorma Mare', description: 'Porție dublă de carne, salată, sosuri, lipie', price: 28, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '7', name: 'Mititei (5 buc)', description: 'Mititei preparați la grătar, cu muștar și pâine', price: 22, category: { title: 'Fast Food', value: 'fastfood' } },
-    { _id: '8', name: 'Aripioare (6 buc)', description: 'Aripioare de pui fripte, cu sos BBQ sau picant', price: 18, category: { title: 'Fast Food', value: 'fastfood' } },
+    { _id: '1', name: 'Burger Special', description: 'Carne de vită, brânză cheddar, salată, roșie, sosuri speciale', price: 28, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '2', name: 'Burger Chicken', description: 'Fileu de pui pane, salată, roșie, sos maioneză', price: 24, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '3', name: 'Cartofi Prăjiți', description: 'Cartofi prăjiți crocanți, serviți cu sosuri la alegere', price: 12, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '4', name: 'Hot Dog Clasic', description: 'Cârnăcior, muștar, ketchup, ceapă, pâine proaspătă', price: 15, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '5', name: 'Shaorma Mică', description: 'Carne de pui, salată, sosuri, lipie', price: 20, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '6', name: 'Shaorma Mare', description: 'Porție dublă de carne, salată, sosuri, lipie', price: 28, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '7', name: 'Mititei (5 buc)', description: 'Mititei preparați la grătar, cu muștar și pâine', price: 22, category: { title: 'Fast Food', slug: 'fastfood' } },
+    { _id: '8', name: 'Aripioare (6 buc)', description: 'Aripioare de pui fripte, cu sos BBQ sau picant', price: 18, category: { title: 'Fast Food', slug: 'fastfood' } },
     
     // TRADIȚIONALE
-    { _id: '9', name: 'Sarmale cu Mămăliguță', description: 'Sarmale tradiționale în foi de varză, servite cu mămăligă și smântână', price: 32, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '10', name: 'Papanași', description: 'Papanași branzoși cu smântână și dulceață de fructe', price: 18, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '11', name: 'Tochitură Românească', description: 'Carne de porc, cârnați, ouă ochiuri, mămăliguță', price: 35, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '12', name: 'Mămăliguță cu Brânză', description: 'Mămăliguță caldă, brânză topită, smântână', price: 16, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '13', name: 'Ciorbă de Burtă', description: 'Ciorbă tradițională cu smântână și ou fiert', price: 18, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '14', name: 'Ciorbă de Legume', description: 'Ciorbă de sezon cu legume proaspete și smântână', price: 14, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '15', name: 'Pui la Cuptor', description: 'Pui întreg la cuptor cu legume și cartofi', price: 38, category: { title: 'Tradițional', value: 'traditionale' } },
-    { _id: '16', name: 'Coaste de Porc', description: 'Coaste de porc la grătar, cu mămăligă și salată', price: 36, category: { title: 'Tradițional', value: 'traditionale' } },
+    { _id: '9', name: 'Sarmale cu Mămăliguță', description: 'Sarmale tradiționale în foi de varză, servite cu mămăligă și smântână', price: 32, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '10', name: 'Papanași', description: 'Papanași branzoși cu smântână și dulceață de fructe', price: 18, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '11', name: 'Tochitură Românească', description: 'Carne de porc, cârnați, ouă ochiuri, mămăliguță', price: 35, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '12', name: 'Mămăliguță cu Brânză', description: 'Mămăliguță caldă, brânză topită, smântână', price: 16, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '13', name: 'Ciorbă de Burtă', description: 'Ciorbă tradițională cu smântână și ou fiert', price: 18, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '14', name: 'Ciorbă de Legume', description: 'Ciorbă de sezon cu legume proaspete și smântână', price: 14, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '15', name: 'Pui la Cuptor', description: 'Pui întreg la cuptor cu legume și cartofi', price: 38, category: { title: 'Tradițional', slug: 'traditionale' } },
+    { _id: '16', name: 'Coaste de Porc', description: 'Coaste de porc la grătar, cu mămăligă și salată', price: 36, category: { title: 'Tradițional', slug: 'traditionale' } },
     
     // BĂUTURI
-    { _id: '17', name: 'Limonadă Proaspătă', description: 'Limonadă preparată din fructe proaspete și mentă', price: 10, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '18', name: 'Coca Cola', description: 'Băutură răcoritoare (330ml)', price: 8, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '19', name: 'Fanta', description: 'Băutură răcoritoare cu gust de portocale (330ml)', price: 8, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '20', name: 'Sprite', description: 'Băutură răcoritoare cu gust de lămâie (330ml)', price: 8, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '21', name: 'Apă Minerală', description: 'Apă minerală Borsec (500ml)', price: 6, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '22', name: 'Cafea Espresso', description: 'Cafea arabă proaspăt măcinată', price: 8, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '23', name: 'Cafea Latte', description: 'Cafea cu lapte și spumă de lapte', price: 12, category: { title: 'Băuturi', value: 'bauturi' } },
-    { _id: '24', name: 'Ceai', description: 'Ceai negru sau din plante', price: 8, category: { title: 'Băuturi', value: 'bauturi' } },
+    { _id: '17', name: 'Limonadă Proaspătă', description: 'Limonadă preparată din fructe proaspete și mentă', price: 10, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '18', name: 'Coca Cola', description: 'Băutură răcoritoare (330ml)', price: 8, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '19', name: 'Fanta', description: 'Băutură răcoritoare cu gust de portocale (330ml)', price: 8, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '20', name: 'Sprite', description: 'Băutură răcoritoare cu gust de lămâie (330ml)', price: 8, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '21', name: 'Apă Minerală', description: 'Apă minerală Borsec (500ml)', price: 6, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '22', name: 'Cafea Espresso', description: 'Cafea arabă proaspăt măcinată', price: 8, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '23', name: 'Cafea Latte', description: 'Cafea cu lapte și spumă de lapte', price: 12, category: { title: 'Băuturi', slug: 'bauturi' } },
+    { _id: '24', name: 'Ceai', description: 'Ceai negru sau din plante', price: 8, category: { title: 'Băuturi', slug: 'bauturi' } },
     
     // CATERING
-    { _id: '25', name: 'Pachet Familial (4 persoane)', description: 'Pachet complet: feluri principale, salate, desert', price: 120, category: { title: 'Catering', value: 'catering' } },
-    { _id: '26', name: 'Pachet Corporate (10 persoane)', description: 'Meniu complet pentru evenimente corporate', price: 280, category: { title: 'Catering', value: 'catering' } },
-    { _id: '27', name: 'Pachet Petrecere Copii', description: 'Meniu special pentru copii: nuggets, cartofi, gustări', price: 90, category: { title: 'Catering', value: 'catering' } },
-    { _id: '28', name: 'Meniu Nuntă', description: 'Meniu complet pentru nunți (per persoană)', price: 150, category: { title: 'Catering', value: 'catering' } },
-    { _id: '29', name: 'Meniu Eveniment', description: 'Meniu personalizat pentru orice tip de eveniment', price: 0, category: { title: 'Catering', value: 'catering' } }
+    { _id: '25', name: 'Pachet Familial (4 persoane)', description: 'Pachet complet: feluri principale, salate, desert', price: 120, category: { title: 'Catering', slug: 'catering' } },
+    { _id: '26', name: 'Pachet Corporate (10 persoane)', description: 'Meniu complet pentru evenimente corporate', price: 280, category: { title: 'Catering', slug: 'catering' } },
+    { _id: '27', name: 'Pachet Petrecere Copii', description: 'Meniu special pentru copii: nuggets, cartofi, gustări', price: 90, category: { title: 'Catering', slug: 'catering' } },
+    { _id: '28', name: 'Meniu Nuntă', description: 'Meniu complet pentru nunți (per persoană)', price: 150, category: { title: 'Catering', slug: 'catering' } },
+    { _id: '29', name: 'Meniu Eveniment', description: 'Meniu personalizat pentru orice tip de eveniment', price: 0, category: { title: 'Catering', slug: 'catering' } }
   ];
 }
 
@@ -123,7 +128,44 @@ function getFallbackMenuItems() {
 // ========================================
 
 /**
- * Renderizează lista de produse în HTML
+ * Obține imaginea locală corespunzătoare produsului
+ */
+function getMenuItemImage(item) {
+  const images = {
+    'Burger Special': 'burger-special.jpeg',
+    'Burger Chicken': 'burger-chicken.jpeg',
+    'Cartofi Prăjiți': 'cartofi-prajiti.jpeg',
+    'Hot Dog Clasic': 'hot-dog-clasic.jpeg',
+    'Shaorma Mică': 'shaorma-mica.jpeg',
+    'Shaorma Mare': 'shaorma-mare.jpeg',
+    'Mititei (5 buc)': 'mititei.jpeg',
+    'Aripioare (6 buc)': 'aripioare.jpeg',
+    'Sarmale cu Mămăliguță': 'sarmale-cu-mamaliguta.jpeg',
+    'Papanași': 'papanasi.jpeg',
+    'Tochitură Românească': 'tochitura-romaneasca.jpeg',
+    'Mămăliguță cu Brânză': 'mamaliguta-cu-branza.jpeg',
+    'Ciorbă de Burtă': 'ciorba-de-burta.jpeg',
+    'Ciorbă de Legume': 'ciorba-de-legume.jpeg',
+    'Pui la Cuptor': 'pui-la-cuptor.jpeg',
+    'Coaste de Porc': 'coaste-porc.jpeg'
+  };
+
+  // Verifică după nume exact
+  if (images[item.name]) return `imgs/meniu/${images[item.name]}`;
+  
+  // Verifică parțial dacă nu găsește exact
+  const lowerName = item.name.toLowerCase();
+  for (const [key, value] of Object.entries(images)) {
+    if (lowerName.includes(key.toLowerCase()) || key.toLowerCase().includes(lowerName)) {
+      return `imgs/meniu/${value}`;
+    }
+  }
+
+  return null; // Nu returnăm nicio imagine dacă nu există una specifică
+}
+
+/**
+ * Renderizează lista de produse în HTML, grupate pe ierarhia de categorii
  */
 function renderMenuItems(items) {
   const menuList = document.getElementById('menuList');
@@ -146,35 +188,140 @@ function renderMenuItems(items) {
     return;
   }
   
-  // Generează HTML pentru fiecare produs
+  // Grupăm produsele pe categorii principale și subcategorii
+  const topCategoriesMap = {};
+  
   items.forEach(item => {
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'menu-item';
-    itemDiv.dataset.category = getCategoryValue(item.category);
+    // Determinăm categoria principală (top category)
+    const category = item.category || { title: 'Diverse', slug: 'diverse' };
+    const isSubcategory = !!category.parent;
+    const topCategory = isSubcategory ? category.parent : category;
     
-    // Pentru produsele cu preț 0 (La cerere), afișăm altfel
-    const priceDisplay = item.price === 0 || !item.price 
-      ? 'La cerere' 
-      : `${Number(item.price).toFixed(2)} RON`;
+    const topTitle = topCategory.title;
+    const topValue = normalizeCategoryValue(topCategory.slug || 'diverse');
     
-    // Verifică dacă este produs recomandat
-    const featuredClass = item.featured ? ' featured' : '';
-    const featuredBadge = item.featured ? '<span class="menu-badge">Recomandat</span>' : '';
+    if (!topCategoriesMap[topTitle]) {
+      topCategoriesMap[topTitle] = {
+        title: topTitle,
+        value: topValue,
+        subCategories: {} // Mapă pentru subcategorii: subTitle -> {title, items}
+      };
+    }
     
-    itemDiv.innerHTML = `
-      <div class="menu-item-content${featuredClass}">
-        ${featuredBadge}
-        <span class="menu-category">${item.category?.title || 'Necategorizat'}</span>
-        <h3>${item.name}</h3>
-        <p>${item.description || ''}</p>
-        <div class="menu-item-footer">
-          <span class="menu-price">${priceDisplay}</span>
-        </div>
+    const subTitle = category.title;
+    if (!topCategoriesMap[topTitle].subCategories[subTitle]) {
+      topCategoriesMap[topTitle].subCategories[subTitle] = {
+        title: subTitle,
+        isMain: !isSubcategory, // Marcam dacă este chiar categoria principală
+        items: []
+      };
+    }
+    topCategoriesMap[topTitle].subCategories[subTitle].items.push(item);
+  });
+  
+  // Rendăm fiecare categorie principală
+  Object.values(topCategoriesMap).forEach(topCategory => {
+    const categorySection = document.createElement('div');
+    categorySection.className = 'menu-category-section';
+    categorySection.id = `category-${topCategory.value}`;
+    categorySection.dataset.category = topCategory.value;
+    
+    let sectionHtml = `
+      <div class="category-header">
+        <h2 class="category-title">${topCategory.title}</h2>
+        <div class="category-line"></div>
       </div>
     `;
     
-    menuList.appendChild(itemDiv);
+    // Sortăm subcategoriile astfel încât categoria principală (dacă are produse direct) să fie prima
+    const sortedSubCategories = Object.values(topCategory.subCategories).sort((a, b) => {
+      if (a.isMain) return -1;
+      if (b.isMain) return 1;
+      return a.title.localeCompare(b.title);
+    });
+    
+    sortedSubCategories.forEach(sub => {
+      // Dacă subcategoria nu este categoria principală, adăugăm un subtitlu
+      if (!sub.isMain) {
+        sectionHtml += `<h3 class="subcategory-title">${sub.title}</h3>`;
+      }
+      
+      sectionHtml += `
+        <div class="menu-grid">
+          ${sub.items.map(item => renderSingleItem(item, topCategory.value)).join('')}
+        </div>
+      `;
+    });
+    
+    categorySection.innerHTML = sectionHtml;
+    menuList.appendChild(categorySection);
   });
+}
+
+/**
+ * Normalizează valoarea categoriei pentru a se potrivi cu filtrele
+ */
+function normalizeCategoryValue(value) {
+  if (!value) return 'diverse';
+  if (typeof value !== 'string') return value.current || 'diverse';
+  
+  const map = {
+    'fast-food': 'fastfood',
+    'fast_food': 'fastfood',
+    'traditional': 'traditionale',
+    'traditionale': 'traditionale',
+    'mic-dejun': 'mic-dejun',
+    'mic_dejun': 'mic-dejun',
+    'bauturi': 'bauturi',
+    'băuturi': 'bauturi',
+    'catering': 'catering'
+  };
+  
+  return map[value.toLowerCase()] || value.toLowerCase();
+}
+
+/**
+ * Renderizează un singur produs (helper pentru renderMenuItems)
+ */
+function renderSingleItem(item, topCategoryValue) {
+  // Pentru produsele cu preț 0 (La cerere), afișăm altfel
+  const priceDisplay = item.price === 0 || !item.price 
+    ? 'La cerere' 
+    : `${Number(item.price).toFixed(2)} RON`;
+  
+  // Verifică dacă este produs recomandat
+  const featuredClass = item.featured ? ' featured' : '';
+  const featuredBadge = item.featured ? '<div class="item-badge">Recomandat</div>' : '';
+  const itemImage = getMenuItemImage(item);
+  
+  // Generăm container-ul de imagine
+  const imageHtml = itemImage 
+    ? `<div class="menu-item-image">
+         <img src="${itemImage}" alt="${item.name}" loading="lazy">
+         ${featuredBadge}
+       </div>`
+    : `<div class="menu-item-image no-image">
+         <div class="placeholder-icon"><span class="material-symbols-outlined">restaurant</span></div>
+         ${featuredBadge}
+       </div>`;
+  
+  return `
+    <div class="menu-item${featuredClass}" data-category="${topCategoryValue}">
+      ${imageHtml}
+      <div class="menu-item-content">
+        <div class="menu-item-header">
+          <h3>${item.name}</h3>
+          <span class="menu-price">${priceDisplay}</span>
+        </div>
+        <p>${item.description || ''}</p>
+        <div class="menu-item-footer">
+          <button class="btn-order-simple" onclick="window.location.href='tel:+40720000000'">
+            <span class="material-symbols-outlined">call</span> Comandă
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 /**
@@ -212,6 +359,17 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Initializează filtrarea (din menu.js)
   if (typeof initializeMenuFiltering === 'function') {
     initializeMenuFiltering();
+  }
+
+  // Verifică parametrii URL pentru filtrare automată (ex: ?filter=catering)
+  const urlParams = new URLSearchParams(window.location.search);
+  const filterParam = urlParams.get('filter');
+  if (filterParam) {
+    const filterBtn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
+    if (filterBtn) {
+      // Simulăm un click pe butonul de filtrare
+      setTimeout(() => filterBtn.click(), 100);
+    }
   }
   
   // Mobile navigation toggle

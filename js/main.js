@@ -109,6 +109,53 @@ document.addEventListener('DOMContentLoaded', function () {
       img.setAttribute('loading', 'lazy');
     });
   }
+  
+  // Newsletter subscription
+  const newsletterForms = document.querySelectorAll('.newsletter-form');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      
+      const emailInput = this.querySelector('.newsletter-input');
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Abonează-te';
+      
+      if (!emailInput || !emailInput.value) return;
+      
+      try {
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Se trimite...';
+        }
+        
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: emailInput.value
+          }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          alert(data.message || 'Te-ai abonat cu succes!');
+          this.reset();
+        } else {
+          throw new Error(data.error || 'A apărut o eroare. Vă rugăm să încercați din nou.');
+        }
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      }
+    });
+  });
 });
 
 /**

@@ -1117,7 +1117,7 @@
   }
   
   /* Menu page */
-  .menu-grid {
+  .menu-grid, .menu-list {
     gap: 1rem;
   }
   
@@ -1426,7 +1426,7 @@
     font-size: 1.6rem;
   }
   
-  .menu-grid {
+  .menu-grid, .menu-list {
     grid-template-columns: repeat(2, 1fr);
   }
   
@@ -1458,7 +1458,7 @@
     font-size: 1.2rem;
   }
   
-  .menu-grid {
+  .menu-grid, .menu-list {
     grid-template-columns: 1fr;
   }
   

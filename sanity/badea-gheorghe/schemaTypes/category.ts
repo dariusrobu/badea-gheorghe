@@ -27,6 +27,13 @@ export const category = defineType({
       type: 'number',
       validation: (Rule) => Rule.required()
     }),
+    defineField({
+      name: 'parent',
+      title: 'Categorie Părinte',
+      type: 'reference',
+      to: [{type: 'category'}],
+      description: 'Dacă aceasta este o subcategorie, selectați categoria părinte (ex: Fast-food, Tradiționale, etc.)'
+    }),
   ],
   preview: {
     select: {

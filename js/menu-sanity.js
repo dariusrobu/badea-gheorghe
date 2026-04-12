@@ -1,16 +1,16 @@
 /**
  * Menu filtering functionality for Restaurant Sebes
- * Works with Sanity CMS and fallback menu
+ * Works with Sanity CMS grouped layout
  */
 
 document.addEventListener('DOMContentLoaded', function () {
   // Așteaptă ca meniul să fie renderizat
   const checkAndInitialize = () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const menuItems = document.querySelectorAll('.menu-item');
+    const categorySections = document.querySelectorAll('.menu-category-section');
     
-    if (filterButtons.length === 0) {
-      // Try again if filters not loaded yet
+    if (filterButtons.length === 0 || categorySections.length === 0) {
+      // Try again if elements not loaded yet
       setTimeout(checkAndInitialize, 100);
       return;
     }
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const filterValue = this.getAttribute('data-filter');
         
-        // Filter menu items with animation
-        filterMenuItems(menuItems, filterValue);
+        // Filter category sections with animation
+        filterCategorySections(categorySections, filterValue);
       });
     });
   };
@@ -35,56 +35,45 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Filter menu items with smooth animation
+ * Filter category sections with smooth animation
  */
-function filterMenuItems(menuItems, filterValue) {
-  menuItems.forEach(item => {
-    const itemCategory = item.getAttribute('data-category');
+function filterCategorySections(sections, filterValue) {
+  sections.forEach(section => {
+    const sectionCategory = section.getAttribute('data-category');
     
-    // Check if item should be shown
-    // Convert category title to value for comparison
+    // Check if section should be shown
     const shouldShow = filterValue === 'all' || 
-      itemCategory?.toLowerCase() === filterValue.toLowerCase() ||
-      getCategoryValueFromTitle(itemCategory) === filterValue;
+      sectionCategory?.toLowerCase() === filterValue.toLowerCase() ||
+      getCategoryValueFromTitle(sectionCategory) === filterValue;
     
     if (shouldShow) {
-      showItem(item);
+      showElement(section);
     } else {
-      hideItem(item);
+      hideElement(section);
     }
   });
 }
 
 /**
- * Show item with animation
+ * Show element with animation
  */
-function showItem(item) {
-  // First make sure it's visible but transparent
-  item.style.display = 'block';
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(20px)';
-  
-  // Trigger reflow
-  void item.offsetWidth;
-  
-  // Animate to visible
-  item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  item.style.opacity = '1';
-  item.style.transform = 'translateY(0)';
+function showElement(el) {
+  el.style.display = 'block';
+  setTimeout(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 10);
 }
 
 /**
- * Hide item with animation
+ * Hide element with animation
  */
-function hideItem(item) {
-  item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(-20px)';
-  
-  // After animation, set display none
+function hideElement(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
   setTimeout(() => {
-    if (item.style.opacity === '0') {
-      item.style.display = 'none';
+    if (el.style.opacity === '0') {
+      el.style.display = 'none';
     }
   }, 300);
 }
@@ -103,11 +92,13 @@ function getCategoryValueFromTitle(title) {
     'traditionale': 'traditionale',
     'băuturi': 'bauturi',
     'bauturi': 'bauturi',
-    'catering': 'catering'
+    'catering': 'catering',
+    'mic dejun': 'mic-dejun',
+    'mic-dejun': 'mic-dejun'
   };
   
   const lowerTitle = title.toLowerCase();
-  return categoryMap[lowerTitle] || 'fastfood';
+  return categoryMap[lowerTitle] || lowerTitle;
 }
 
 /**
@@ -115,32 +106,33 @@ function getCategoryValueFromTitle(title) {
  */
 window.initializeMenuFiltering = function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const menuItems = document.querySelectorAll('.menu-item');
+  const categorySections = document.querySelectorAll('.menu-category-section');
   
-  if (filterButtons.length === 0 || menuItems.length === 0) {
+  if (filterButtons.length === 0) {
     return;
   }
   
-  // Make sure all items are visible initially
-  menuItems.forEach(item => {
-    item.style.display = 'block';
-    item.style.opacity = '1';
-    item.style.transform = 'translateY(0)';
+  // Make sure all sections are visible initially
+  categorySections.forEach(section => {
+    section.style.display = 'block';
+    section.style.opacity = '1';
+    section.style.transform = 'translateY(0)';
+    section.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
   });
   
   // Add click events
   filterButtons.forEach(button => {
-    // Remove existing listeners to avoid duplicates
+    // Clone to remove old listeners
     const newButton = button.cloneNode(true);
     button.parentNode.replaceChild(newButton, button);
     
     newButton.addEventListener('click', function () {
-      // Update active button
       filterButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
+      // Find all matching buttons across the DOM (if duplicates exist)
+      document.querySelectorAll(`.filter-btn[data-filter="${this.dataset.filter}"]`).forEach(btn => btn.classList.add('active'));
       
       const filterValue = this.getAttribute('data-filter');
-      filterMenuItems(document.querySelectorAll('.menu-item'), filterValue);
+      filterCategorySections(document.querySelectorAll('.menu-category-section'), filterValue);
     });
   });
 };

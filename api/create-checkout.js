@@ -30,8 +30,8 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `https://badea-gheorghe.vercel.app/catering.html?success=true&orderId=${orderId}`,
-      cancel_url: `https://badea-gheorghe.vercel.app/catering.html?canceled=true`,
+      success_url: `https://badea-gheorghe.vercel.app/meniu.html?success=true&orderId=${orderId}`,
+      cancel_url: `https://badea-gheorghe.vercel.app/meniu.html?canceled=true`,
       customer_email: email,
       metadata: {
         orderId: orderId,
