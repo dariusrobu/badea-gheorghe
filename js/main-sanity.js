@@ -131,37 +131,52 @@ function getFallbackMenuItems() {
  * Obține imaginea locală corespunzătoare produsului
  */
 function getMenuItemImage(item) {
-  const images = {
-    'Burger Special': 'burger-special.jpeg',
-    'Burger Chicken': 'burger-chicken.jpeg',
-    'Cartofi Prăjiți': 'cartofi-prajiti.jpeg',
-    'Hot Dog Clasic': 'hot-dog-clasic.jpeg',
-    'Shaorma Mică': 'shaorma-mica.jpeg',
-    'Shaorma Mare': 'shaorma-mare.jpeg',
-    'Mititei (5 buc)': 'mititei.jpeg',
-    'Aripioare (6 buc)': 'aripioare.jpeg',
-    'Sarmale cu Mămăliguță': 'sarmale-cu-mamaliguta.jpeg',
-    'Papanași': 'papanasi.jpeg',
-    'Tochitură Românească': 'tochitura-romaneasca.jpeg',
-    'Mămăliguță cu Brânză': 'mamaliguta-cu-branza.jpeg',
-    'Ciorbă de Burtă': 'ciorba-de-burta.jpeg',
-    'Ciorbă de Legume': 'ciorba-de-legume.jpeg',
-    'Pui la Cuptor': 'pui-la-cuptor.jpeg',
-    'Coaste de Porc': 'coaste-porc.jpeg'
-  };
+  if (item.imageUrl) return item.imageUrl;
 
-  // Verifică după nume exact
-  if (images[item.name]) return `imgs/meniu/${images[item.name]}`;
-  
-  // Verifică parțial dacă nu găsește exact
-  const lowerName = item.name.toLowerCase();
-  for (const [key, value] of Object.entries(images)) {
-    if (lowerName.includes(key.toLowerCase()) || key.toLowerCase().includes(lowerName)) {
-      return `imgs/meniu/${value}`;
+  const keywordMap = [
+    { keywords: ['burger', 'special', 'vita'], image: 'burger-special.jpeg' },
+    { keywords: ['burger', 'pui', 'chicken'], image: 'burger-chicken.jpeg' },
+    { keywords: ['cartofi'], image: 'cartofi-prajiti.jpeg' },
+    { keywords: ['hot', 'dog'], image: 'hot-dog-clasic.jpeg' },
+    { keywords: ['shaorma', 'mica'], image: 'shaorma-mica.jpeg' },
+    { keywords: ['shaorma', 'mare'], image: 'shaorma-mare.jpeg' },
+    { keywords: ['mici', 'mititei'], image: 'mititei.jpeg' },
+    { keywords: ['aripi', 'aripioare'], image: 'aripioare.jpeg' },
+    { keywords: ['sarmale'], image: 'sarmale-cu-mamaliguta.jpeg' },
+    { keywords: ['papanasi', 'papanași'], image: 'papanasi.jpeg' },
+    { keywords: ['tochitura', 'tochitură'], image: 'tochitura-romaneasca.jpeg' },
+    { keywords: ['mamaliga', 'mămăligă', 'mămăliguță', 'branza', 'brânză'], image: 'mamaliguta-cu-branza.jpeg' },
+    { keywords: ['ciorba', 'ciorbă', 'burta', 'burtă'], image: 'ciorba-de-burta.jpeg' },
+    { keywords: ['ciorba', 'ciorbă', 'legume'], image: 'ciorba-de-legume.jpeg' },
+    { keywords: ['pui', 'cuptor'], image: 'pui-la-cuptor.jpeg' },
+    { keywords: ['coaste', 'porc'], image: 'coaste-porc.jpeg' }
+  ];
+
+  const lowerName = item.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // Match files if name contains main keywords
+  for (const entry of keywordMap) {
+    // Check if any keyword matches
+    const hasMatch = entry.keywords.some(kw => {
+      const normalizedKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      return lowerName.includes(normalizedKw);
+    });
+    
+    if (hasMatch) {
+      // Special differentiation
+      if (entry.image === 'burger-chicken.jpeg' && !lowerName.includes('pui') && !lowerName.includes('chicken')) continue;
+      if (entry.image === 'burger-special.jpeg' && (lowerName.includes('pui') || lowerName.includes('chicken'))) continue;
+      if (entry.image === 'shaorma-mica.jpeg' && lowerName.includes('mare')) continue;
+      if (entry.image === 'shaorma-mare.jpeg' && lowerName.includes('mica')) continue;
+      if (entry.image === 'ciorba-de-burta.jpeg' && lowerName.includes('legume')) continue;
+      if (entry.image === 'ciorba-de-legume.jpeg' && lowerName.includes('burta')) continue;
+      if (entry.image === 'mamaliguta-cu-branza.jpeg' && lowerName.includes('sarmale')) continue;
+      
+      return `imgs/meniu/${entry.image}`;
     }
   }
 
-  return null; // Nu returnăm nicio imagine dacă nu există una specifică
+  return null;
 }
 
 /**
