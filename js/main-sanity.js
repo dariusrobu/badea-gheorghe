@@ -321,6 +321,7 @@ function renderSingleItem(item, topCategoryValue) {
       <div class="menu-item-content">
         <div class="menu-item-header">
           <h3>${item.name}</h3>
+          <div class="menu-dots"></div>
           <span class="menu-price">${priceDisplay}</span>
         </div>
         <p class="menu-item-description">${item.description || ''}</p>
@@ -364,6 +365,33 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Initializează filtrarea (din menu.js)
   if (typeof initializeMenuFiltering === 'function') {
     initializeMenuFiltering();
+  }
+
+  // Initializare View Toggles (Grid / List)
+  const menuListElement = document.getElementById('menuList');
+  const viewGridBtn = document.getElementById('view-grid');
+  const viewListBtn = document.getElementById('view-list');
+
+  if (menuListElement && viewGridBtn && viewListBtn) {
+    const applyViewMode = (mode) => {
+      if (mode === 'list') {
+        menuListElement.classList.add('view-list');
+        viewListBtn.classList.add('active');
+        viewGridBtn.classList.remove('active');
+      } else {
+        menuListElement.classList.remove('view-list');
+        viewGridBtn.classList.add('active');
+        viewListBtn.classList.remove('active');
+      }
+      localStorage.setItem('restaurantSebes_menuView', mode);
+    };
+
+    // Citește preferința salvată anterior sau folosește grid by default
+    const savedView = localStorage.getItem('restaurantSebes_menuView') || 'grid';
+    applyViewMode(savedView);
+
+    viewGridBtn.addEventListener('click', () => applyViewMode('grid'));
+    viewListBtn.addEventListener('click', () => applyViewMode('list'));
   }
 
   // Verifică parametrii URL pentru filtrare automată (ex: ?filter=catering)

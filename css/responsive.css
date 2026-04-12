@@ -1502,6 +1502,28 @@
   .menu-price {
     font-size: 1.8rem;
   }
+  
+  /* List view mobile overrides */
+  .view-list .menu-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.6rem 0;
+  }
+  
+  .view-list .menu-item-image {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+  
+  .view-list .menu-dots {
+    display: none;
+  }
+  
+  .view-list .menu-item-description {
+    -webkit-line-clamp: 2;
+    font-size: 1.3rem;
+  }
 }
   
   .menu-card h3 {
